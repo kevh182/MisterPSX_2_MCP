@@ -1,8 +1,8 @@
-**  MiSTer PSX saves 2 MemCard Pro PS1   **
+# **  MiSTer PSX saves 2 MemCard Pro PS1   **
 
-**  Backup your data before use          **
+# **  Backup your data before use          **
 
-** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
+# ** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
 
 More info on changing your PowerShell execution policy:
 
@@ -16,11 +16,11 @@ Right click "PS1_MiSTer2MCP.ps1".  Click "Edit".
 
 PowerShell ISE opens.  Edit the following variables to match your local path (keep the ""):
 
-$logFile = " path \ to \logs \ $(Date)_PS1_MiSTer2MCP.log"
+> $logFile = " path \ to \logs \ $(Date)_PS1_MiSTer2MCP.log"
 
-$mcpBackup = " path \ to \Backup\MCP"
+> $mcpBackup = " path \ to \Backup\MCP"
 
-$misterBackup = " path \ to \Backup\MiSTer"
+> $misterBackup = " path \ to \Backup\MiSTer"
 
 PS1_MiSTer2MCP.ps1
 1. Right click "Run with PowerShell"
