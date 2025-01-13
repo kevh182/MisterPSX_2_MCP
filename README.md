@@ -1,8 +1,8 @@
-# **  MiSTer PSX saves 2 MemCard Pro PS1   **
+# MiSTer PSX saves 2 MemCard Pro PS1
 
 ## **  Backup your data before use          **
 
-## ** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
+### ** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
 
 More info on changing your PowerShell execution policy:
 
@@ -40,7 +40,7 @@ This script was designed to use the "Redump" naming conventions for MiSTer save 
 
 You can easily add a game that is not included in "PS1_DB.csv".  Add a new row with the filename (without extension), its GameID (XXXX-12345), and MemCardPro filename (XXXX-12345-1.mcd).
 
-his script only creates one MemCardPro memory card channel - "XXXX-12345-1.mcd".  I do not have plans to add support for more than one MemCardPro memory card channel.
+This script only creates one MemCardPro memory card channel - "XXXX-12345-1.mcd".  I do not have plans to add support for more than one MemCardPro memory card channel.
 
 When the script creates the MiSTer save, you may see multiple "Versions", "Demo" or "Beta" versions of a game title because they all share the same GameID.  
 
