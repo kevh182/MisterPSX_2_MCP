@@ -2,15 +2,7 @@
 
 **  Backup your data before use          **
 
-PS1_MiSTer2MCP.ps1
-1. Right click "Run with PowerShell"
-2. Enter the path to your MiSTer saves
-3. Enter the path to your MCP PS1 folder.
-A log file is generated to see what files copied.
-
-This script will create MemCardPro PS1 "Memory Cards" from your MiSTer PSX save files.  It will also create MiSTer save files from MemCardPro memory cards.
-
-You will have to change the PowerShell execution policy on your machine for these scripts to work.  
+** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
 
 More info on changing your PowerShell execution policy:
 
@@ -19,6 +11,24 @@ https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.securit
 https://ss64.com/ps/set-executionpolicy.html
 
 Alternatively, you could just copy the text of these scripts and paste it into Windows PowerShell ISE (or any text editor) and save it with a .ps1 extension.
+
+Right click "PS1_MiSTer2MCP.ps1".  Click "Edit".  
+
+PowerShell ISE opens.  Edit the following variables to match your local path (keep the ""):
+
+$logFile = "path\to\logs\$(Date)_PS1_MiSTer2MCP.log"
+
+$mcpBackup = "path\to\Backup\MCP"
+
+$misterBackup = "path\to\Backup\MiSTer"
+
+PS1_MiSTer2MCP.ps1
+1. Right click "Run with PowerShell"
+2. Enter the path to your MiSTer saves
+3. Enter the path to your MCP PS1 folder.
+A log file is generated to see what files copied.
+
+This script will create MemCardPro PS1 "Memory Cards" from your MiSTer PSX save files.  It will also create MiSTer save files from MemCardPro memory cards.
 
 A few things to note:
 
