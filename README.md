@@ -1,8 +1,8 @@
-# **  MiSTer PSX saves 2 MemCard Pro PS1   **
+# MiSTer PSX saves 2 MemCard Pro PS1
 
 ## **  Backup your data before use          **
 
-## ** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
+### ** You will have to change the PowerShell execution policy on your machine for these scripts to work. **
 
 More info on changing your PowerShell execution policy:
 
@@ -17,7 +17,7 @@ Right click "PS1_MiSTer2MCP.ps1".  Click "Edit".
 PowerShell ISE opens.  Edit the following variables to match your local paths (keep the ""):
 
 ```
-$logFile = "path\to\logs\$(Date)_PS1_MiSTer2MCP.log"
+$logPath = "path\to\logs"
 $mcpBackup = "path\to\Backup\MCP"
 $misterBackup = "path\to\Backup\MiSTer"
 ```
@@ -40,10 +40,18 @@ This script was designed to use the "Redump" naming conventions for MiSTer save 
 
 You can easily add a game that is not included in "PS1_DB.csv".  Add a new row with the filename (without extension), its GameID (XXXX-12345), and MemCardPro filename (XXXX-12345-1.mcd).
 
- This script only creates one MemCardPro memory card channel - "XXXX-12345-1.mcd".  I do not have plans to add support for more than one MemCardPro memory card channel.
- 
- When the script creates the MiSTer save, you may see multiple "revisions" of a game title.  For example, "Tomb Raider (USA) has 7 versions of the game that share the same GameID - SLUS-00152.  "SLUS-00152-1.mcd" will create the following: "Tomb Raider (USA).sav", "Tomb Raider (USA) (Rev 1).sav", "Tomb Raider (USA) (Rev 2).sav", "Tomb Raider (USA) (Rev 3).sav", "Tomb Raider (USA) (Rev 4).sav", "Tomb Raider (USA) (Rev 5).sav", and "Tomb Raider (USA) (Rev 6).sav" because they all share the same GameID.
- 
- This is expected behavior.
+This script only creates one MemCardPro memory card channel - "XXXX-12345-1.mcd".  I do not have plans to add support for more than one MemCardPro memory card channel.
 
-Original Excel spreadsheet, "PS1_Database.xlsx", included so you can customize the "PS1_DB.csv" to your liking.
+When the script creates the MiSTer save, you may see multiple "Versions", "Demo" or "Beta" versions of a game title because they all share the same GameID.  
+
+For example; "Tomb Raider (USA) has 7 versions of the game that share the same GameID - SLUS-00152.  "SLUS-00152-1.mcd" will create the following: 
+
+ ```
+"Tomb Raider (USA).sav"
+"Tomb Raider (USA) (Rev 1).sav"
+"Tomb Raider (USA) (Rev 2).sav"
+"Tomb Raider (USA) (Rev 3).sav"
+"Tomb Raider (USA) (Rev 4).sav"
+"Tomb Raider (USA) (Rev 5).sav"
+"Tomb Raider (USA) (Rev 6).sav"
+```
