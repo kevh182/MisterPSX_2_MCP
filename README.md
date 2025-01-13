@@ -16,11 +16,9 @@ Right click "PS1_MiSTer2MCP.ps1".  Click "Edit".
 
 PowerShell ISE opens.  Edit the following variables to match your local path (keep the ""):
 
-> $logFile = " path \ to \logs \ $(Date)_PS1_MiSTer2MCP.log"
-
-> $mcpBackup = " path \ to \Backup\MCP"
-
-> $misterBackup = " path \ to \Backup\MiSTer"
+> $logFile = "path\to\logs\$(Date)_PS1_MiSTer2MCP.log"
+> $mcpBackup = "path\to\Backup\MCP"
+> $misterBackup = "path\to\Backup\MiSTer"
 
 PS1_MiSTer2MCP.ps1
 1. Right click "Run with PowerShell"
