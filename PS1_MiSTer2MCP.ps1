@@ -19,7 +19,9 @@ function DateTime {
 #=============================
 # Set log file
 #=============================
-$logFile = "path\to\logs\$(Date)_PS1_MiSTer2MCP.log"
+$logPath = "path\to\logs"
+
+$logFile = "$($logPath)\$(Date)_PS1_MiSTer2MCP.log"
 
 #=============================
 # Path to PS1 CSV Database
