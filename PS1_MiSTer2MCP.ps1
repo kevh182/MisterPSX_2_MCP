@@ -1,12 +1,10 @@
 ﻿# PS1 MiSTer <--> MemCardPro
-
-
 function TimeStamp {
     
     return (Get-Date -Format "[yyyy-MM-dd--HH:MM:ss]" )  
 }
 
-function Date {
+function Today {
 
     return (Get-Date -Format "yyyy-MM-dd")
 }
@@ -21,7 +19,7 @@ function DateTime {
 #=============================
 $logPath = "path\to\logs"
 
-$logFile = "$($logPath)\$(Date)_PS1_MiSTer2MCP.log"
+$logFile = "$($logPath)\$(Today)_PS1_MiSTer2MCP.log"
 
 #=============================
 # Path to PS1 CSV Database
@@ -53,8 +51,6 @@ Do {
         $misterPSXFolder = Read-Host "Enter the Path to MiSTer Saves (PSX Folder)"
         $mcpFolder = Read-Host "Enter the Path to MemCard Pro PS1 folder (PS1 Folder)"
         
-        $mcpPath = "$($mcpFolder)\$($gameID)"
-
         #=============================
         # MiSTer save files
         #=============================
@@ -115,15 +111,15 @@ Do {
                                         #===================================   
                                         # Backup found MemCardPro save file
                                         #===================================
-                                        if (!(Test-Path "$($mcpBackup)\$(Date)")){
+                                        if (!(Test-Path "$($mcpBackup)\$(Today)")){
 
-                                            cd($mcpBackup); New-Item -Name $(Date) -ItemType Directory
+                                            Set-Location($mcpBackup); New-Item -Name $(Today) -ItemType Directory
 
                                         }
 
                                         Write-Host "$(Timestamp)[MemCardPro Backup]: --> $(DateTime)_$($gameTitle)_$($mcpFile)" -ForegroundColor DarkGreen
                                         Write-Output "$(Timestamp)[MemCardPro Backup]: --> $(DateTime)_$($gameTitle)_$($mcpFile)" | Out-File $logFile -Append
-                                        cd($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($mcpBackup)\$(Date)\$(DateTime)_$($gameTitle)_$($mcpFile)" -Force
+                                        Set-Location($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($mcpBackup)\$(Today)\$(DateTime)_$($gameTitle)_$($mcpFile)" -Force
 
                                     #=========================================================
                                     # Copy MiSTer save file and overwrite MemCardPro save file
@@ -131,7 +127,7 @@ Do {
                                     
                                     Write-Host "$(TimeStamp)[MemCardPro Overwrite]: '$($misterFile.Name)' ($($misterFile.LastWriteTime)) --> '$($mcpFile.Name)' ($($mcpFile.LastWriteTime))" -ForegroundColor DarkYellow
                                     Write-Output "$(TimeStamp)[MemCardPro Overwrite]: '$($misterFile.Name)' ($($misterFile.LastWriteTime)) --> '$($mcpFile.Name)' ($($mcpFile.LastWriteTime))" | Out-File $logFile -Append
-                                    cd($misterPSXFolder); Copy-Item $misterFile -Destination "$($mcpGameIDDst)\$($mcpFileName)" -Force
+                                    Set-Location($misterPSXFolder); Copy-Item $misterFile -Destination "$($mcpGameIDDst)\$($mcpFileName)" -Force
 
                                     }
 
@@ -143,14 +139,14 @@ Do {
                                         #===============================
                                         # Backup found MiSTer save file
                                         #===============================
-                                        if (!(Test-Path "$($misterBackup)\$(Date)")){
+                                        if (!(Test-Path "$($misterBackup)\$(Today)")){
 
-                                            cd($misterBackup); New-Item -Name $(Date) -ItemType Directory
+                                            Set-Location($misterBackup); New-Item -Name $(Today) -ItemType Directory
                                         }
 
                                     Write-Host "$(Timestamp)[MiSTer Backup]: --> $(DateTime)_$($gameID)_$($misterFile)" -ForegroundColor DarkGreen
                                     Write-Output "$(Timestamp)[MiSTer Backup]: --> $(DateTime)_$($gameID)_$($misterFile)" | Out-File $logFile -Append
-                                    cd($misterPSXFolder); Copy-Item $misterFile -Destination "$($misterBackup)\$(Date)\$(DateTime)_$($gameID)_$($misterFile)" -Force
+                                    Set-Location($misterPSXFolder); Copy-Item $misterFile -Destination "$($misterBackup)\$(Today)\$(DateTime)_$($gameID)_$($misterFile)" -Force
 
                                 #=================================================    
                                 # Copy Memcard Pro Save and overwrite MiSTer save
@@ -158,7 +154,7 @@ Do {
 
                                 Write-Host "$(Timestamp)[MiSTer Overwrite]: '$($mcpFile.Name)'($($mcpFile.LastWriteTime)) --> '$($misterFile.Name)' ($($misterFile.LastWriteTime))" -ForegroundColor DarkYellow
                                 Write-Output "$(Timestamp)[MiSTer Overwrite]: '$($mcpFile.Name)'($($mcpFile.LastWriteTime)) --> '$($misterFile.Name)' ($($misterFile.LastWriteTime))" | Out-File $logFile -Append
-                                cd($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($misterPSXFolder)\$($misterFile.Name)" -Force
+                                Set-Location($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($misterPSXFolder)\$($misterFile.Name)" -Force
 
                                     }
                                 }
@@ -189,7 +185,7 @@ Do {
                                 
                                 Write-Host "$(Timestamp)[MiSTer Create]: '$($mcpFile.Name)' --> '$($gameTitle).sav'" -ForegroundColor DarkGreen                              
                                 Write-Output "$(Timestamp)[MiSTer Create]: '$($mcpFile.Name)' --> '$($gameTitle).sav'" | Out-File $logFile -Append
-                                cd($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($misterPSXFolder)\$($gameTitle).sav"
+                                Set-Location($mcpGameIDDst); Copy-Item $mcpFile -Destination "$($misterPSXFolder)\$($gameTitle).sav"
                             }
 
                         }                
@@ -221,13 +217,13 @@ Do {
 
                                 if (!(Test-Path $mcpGameIDFolder)){
                             
-                                    cd($mcpFolder); New-Item -Name $($gameID) -ItemType Directory
+                                    Set-Location($mcpFolder); New-Item -Name $($gameID) -ItemType Directory
 
                                 }
 
                             Write-Host "$(Timestamp)[MemCardPro Create]: '$($gameTitle).sav' --> '$($mcpFileName)'" -ForegroundColor DarkGreen
                             Write-Output "$(Timestamp)[MemCardPro Create]: '$($gameTitle).sav' --> '$($mcpFileName)'" | Out-File $logFile -Append
-                            cd($misterPSXFolder); Copy-Item $sourceFile -Destination $destinationFile
+                            Set-Location($misterPSXFolder); Copy-Item $sourceFile -Destination $destinationFile
                     }
                 }
             }
